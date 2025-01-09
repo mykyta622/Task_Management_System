@@ -1,0 +1,39 @@
+<div th:fragment="index">
+
+    <div th:each="el : ${tasks}" class="h-100 p-5 bg-body-tertiary border rounded-3 mt-3">
+        <h2 th:text="${el.title}"/>
+        <p th:text="${el.description}"/>
+
+
+        <div class="list-group">
+            <label class="list-group-item d-flex gap-2">
+                <input class="form-check-input flex-shrink-0" type="radio" th:name="'listGroupRadios_' + ${el.id}"
+                       id="listGroupRadios1" value="" th:checked="${el.status == 'new'}" disabled>
+                <span>
+        New
+      </span>
+            </label>
+            <label class="list-group-item d-flex gap-2">
+                <input class="form-check-input flex-shrink-0" type="radio" th:name="'listGroupRadios_' + ${el.id}"
+                       id="listGroupRadios2" value="" th:checked="${el.status == 'in proses'}" disabled>
+                <span>
+        In Proses
+      </span>
+            </label>
+            <label class="list-group-item d-flex gap-2">
+                <input class="form-check-input flex-shrink-0" type="radio" th:name="'listGroupRadios_' + ${el.id}"
+                       id="listGroupRadios3" value="" th:checked="${el.status == 'done'}" disabled>
+                <span>
+        Done
+      </span>
+            </label>
+        </div>
+
+
+        <a class="btn btn-outline-secondary mt-2" type="button" th:href="'/edit/' + ${el.id}">Edit</a>
+        <a th:href="'/remove/' + ${el.id}" class="btn btn-outline-secondary mt-2 ms-3" type="button">
+            Remove
+        </a>
+    </div>
+
+</div>
